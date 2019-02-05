@@ -1,8 +1,9 @@
 const express = require("express");
 const router = express.Router();
 
-rconst staticController = require("../controllers/staticController");
+const staticController = require("../controllers/staticController");
 
 router.get("/", staticController.index);
+router.get("/about", staticController.index);
 
 module.exports = router;

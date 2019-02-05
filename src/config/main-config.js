@@ -6,6 +6,6 @@ module.exports = {
   init(app, express){
     app.set("views", viewsFolder);
     app.set("view engine", "ejs");
-    app.user(express.static(path.join(__dirname, "..", "assets")));
+    app.use(express.static(path.join(__dirname, "..", "assets")));
   }
 };
