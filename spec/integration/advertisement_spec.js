@@ -7,7 +7,7 @@ const Advertisement = require("../../src/db/models").Advertisement;
 describe("routes : advertisement", () => {
 
   beforeEach((done) => {
-    this.Advertisement;
+    this.advertisement;
     sequelize.sync({force: true}).then((res) => {
 
       Advertisement.create({
@@ -85,7 +85,7 @@ describe("routes : advertisement", () => {
       it("should render a view with the selected advertisement", (done) => {
         request.get(`{base}${this.advertisement.id}`, (err, res, body) => {
           expect(err).toBeNull();
-          expect(body).toContain("Advertisement 1");
+          expect(body).toContain("Advertisement");
           done();
         });
       });
@@ -95,12 +95,12 @@ describe("routes : advertisement", () => {
     describe("POST /advertisement/:id/destroy", () => {
 
       it("should delete the advertisement with the associated ID", (done) => {
-        Advertisement_1.all()
-        .then((topics) => {
+        Advertisements.all()
+        .then((advertisement) => {
           const advertisementCountBeforeDelete = advertisement.length;
           expect(advertisementCountBeforeDelete).toBe(1);
           request.post(`{base}${this.advertisement.id}/destroy`, (err, res, body) => {
-            Advertisement_1.all()
+            Advertisements.all()
             .then((advertisement) => {
               expect(err).toBeNull();
               expect(advertisement.length).toBe(advertisementCountBeforeDelete - 1);
@@ -120,12 +120,36 @@ describe("routes : advertisement", () => {
         request.get(`${base}${this.topic.id}/edit`, (err, res, body) => {
           expect(err).toBeNull();
           expect(body).toContain("Edit Advertisement");
-          expect(body).toContain("Advertisement 1");
+          expect(body).toContain("New advertisement");
           done();
         });
       });
 
     });
+
+    describe("POST /topics/:id/update", () => {
+
+      it("should update the advertisement with the given values", (done) => {
+        const options = {
+          url: `${base}${this.advertisement.id}/update`,
+          form: {
+            title: "Advertisement",
+            description: "An advertisement"
+        }
+      };
+
+      request.post(options,
+        (err, res, body) => {
+        expect(err).toBeNull();
+        Advertisement.findOne({
+          where: { id: this.advertisement.id}
+      })
+      .then((advertisement) => {
+        expect(advertisement.title).toBe("Advertisement");
+        done();
+      });
+    });
+  });
 */
   });
 });

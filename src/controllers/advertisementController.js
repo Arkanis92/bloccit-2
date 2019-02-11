@@ -36,7 +36,7 @@ module.exports = {
     });
   },
   destroy(req, res, next){
-    advertisementQueries.deleteAdvertisement_1(req.params.id, (err, advertisement) => {
+    advertisementQueries.deleteAdvertisement(req.params.id, (err, advertisement) => {
       if(err){
         res.redirect(500, `/advertisement/${advertisement.id}`)
       } else {
@@ -45,13 +45,20 @@ module.exports = {
     });
   },
   edit(req, res, next){
-    advertisementQueries.getAdvertisement_1(req.params.id, (err, advertisement) => {
+    advertisementQueries.getAdvertisement(req.params.id, (err, advertisement) => {
       if(err || advertisement === null){
         res.redirect(404, "/");
       } else {
         res.render("advertisement/edit", {advertisement});
       }
     });
-  }
+  },
+  update(req, res, next){
+    advertisementQueries.updateAdvertisement(req.params.id, req.body, (err, advertisement) => {
+      if(err || advertisement === null){
+        res.redirect(404, `/advertisement/{advertisement.id}`);
+    }
+  });
+}
   */
 }
