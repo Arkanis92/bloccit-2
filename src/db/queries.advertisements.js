@@ -1,12 +1,44 @@
-const Advertisement_1 = require("./models").Advertisement_1;
+const Advertisement = require("./models").Advertisement;
 
 module.exports = {
 
   getAllAdvertisements(callback){
-    return Advertisement_1.all()
+    return Advertisement.all()
 
-    .then((advertisements) => {
-      callback(null, advertisements);
+    .then((advertisement) => {
+      callback(null, advertisement);
+    })
+    .catch((err) => {
+      callback(err);
+    })
+  },
+  addAdvertisement(newAdvertisement, callback){
+    return Advertisement.create({
+      title: newAdvertisement.title,
+      description: newAdvertisement.description
+    })
+    .then((advertisement) => {
+      callback(null, advertisement);
+    })
+    .catch((err) => {
+      callback(err);
+    })
+  },
+  getAdvertisement(id, callback){
+    return Advertisement.findById(id)
+    .then((advertisement) => {
+      callback(null, advertisement);
+    })
+    .catch((err) => {
+      callback(err);
+    })
+  },
+  deleteAdvertisement(id, callback){
+    return Advertisement.destroy({
+      where: {id}
+    })
+    .then((advertisement) => {
+      callback(null, advertisement);
     })
     .catch((err) => {
       callback(err);
