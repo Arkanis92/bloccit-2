@@ -7,7 +7,7 @@ module.exports = {
       if(err){
         res.redirect(500, "static/index");
       } else {
-        res.render("/advertisement");
+        res.render("advertisement");
       }
     })
   },
