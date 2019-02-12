@@ -26,8 +26,8 @@ module.exports = {
         res.redirect(303, `advertisement/${advertisement.id}`);
       }
     });
-  }//,
-/* show(req, res, next){
+  },/*
+  show(req, res, next){
     advertisementQueries.getAdvertisement(req.params.id, (err, advertisement) => {
       if(err || advertisement === null){
         res.redirect(404, "/");
@@ -35,7 +35,7 @@ module.exports = {
         res.render("advertisement/show", {advertisement});
       }
     });
-  },
+  },*/
   destroy(req, res, next){
     advertisementQueries.deleteAdvertisement(req.params.id, (err, advertisement) => {
       if(err){
@@ -44,7 +44,7 @@ module.exports = {
         res.redirect(303, "/advertisement")
       }
     });
-  },
+  }/*,
   edit(req, res, next){
     advertisementQueries.getAdvertisement(req.params.id, (err, advertisement) => {
       if(err || advertisement === null){

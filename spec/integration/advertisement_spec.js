@@ -39,10 +39,12 @@ describe("routes : advertisement", () => {
       });
     });
 
+  });
+
     describe("GET /advertisements/new", () => {
 
       it("should render a new advertisement form", (done) => {
-        request.get(`${base}new`, (err, res, body) => {
+        request.get(`${base}/new`, (err, res, body) => {
           expect(err).toBeNull();
           expect(body).toContain("New Advertisement");
           done();
@@ -53,7 +55,7 @@ describe("routes : advertisement", () => {
 
     describe("POST /advertisement/create", () => {
       const options = {
-        url: `${base}create`,
+        url: `${base}/create`,
         form: {
           title: "new Coca-Cola advertisement",
           description: "buy some Coca-Cola"
@@ -67,8 +69,8 @@ describe("routes : advertisement", () => {
             Advertisement.findOne({where: {title: "new Coca-Cola advertisement"}})
             .then((advertisements) => {
               expect(res.statusCode).toBe(303);
-              expect(Advertisement.title).toBe("new Coca-Cola advertisement");
-              expect(Advertisement.description).toBe("buy some Coca-Cola");
+              expect(advertisements.title).toBe("new Coca-Cola advertisement");
+              expect(advertisements.description).toBe("buy some Coca-Cola");
               done();
             })
             .catch((err) => {
@@ -83,24 +85,25 @@ describe("routes : advertisement", () => {
     describe("GET /advertisement/:id", () => {
 
       it("should render a view with the selected advertisement", (done) => {
-        request.get(`{base}${this.advertisement.id}`, (err, res, body) => {
+        request.get(`${base}${this.advertisement.id}`, (err, res, body) => {
           expect(err).toBeNull();
-          expect(body).toContain("Advertisement");
+          expect(body).toContain("An advertisement");
           done();
         });
       });
 
     });
+*/
 
     describe("POST /advertisement/:id/destroy", () => {
 
       it("should delete the advertisement with the associated ID", (done) => {
-        Advertisements.all()
+        advertisement.all()
         .then((advertisement) => {
           const advertisementCountBeforeDelete = advertisement.length;
           expect(advertisementCountBeforeDelete).toBe(1);
           request.post(`{base}${this.advertisement.id}/destroy`, (err, res, body) => {
-            Advertisements.all()
+            advertisement.all()
             .then((advertisement) => {
               expect(err).toBeNull();
               expect(advertisement.length).toBe(advertisementCountBeforeDelete - 1);
@@ -114,6 +117,7 @@ describe("routes : advertisement", () => {
 
     });
 
+/*
     describe("GET /advertisement/:id/edit", () => {
 
       it("should render a view with an edit advertisement form", (done) => {
@@ -151,5 +155,4 @@ describe("routes : advertisement", () => {
     });
   });
 */
-  });
 });

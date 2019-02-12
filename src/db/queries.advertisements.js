@@ -23,7 +23,7 @@ module.exports = {
     .catch((err) => {
       callback(err);
     })
-  },
+  }/*,
   getAdvertisement(id, callback){
     return Advertisement.findById(id)
     .then((advertisement) => {
@@ -32,7 +32,7 @@ module.exports = {
     .catch((err) => {
       callback(err);
     })
-  },
+  }*/,
   deleteAdvertisement(id, callback){
     return Advertisement.destroy({
       where: {id}
@@ -43,7 +43,7 @@ module.exports = {
     .catch((err) => {
       callback(err);
     })
-  },
+  }/*,
   updateAdvertisement(id, updatedAdvertisement, callback){
     return Advertisement.findById(id)
     .then((advertisement) => {
@@ -60,5 +60,5 @@ module.exports = {
         callback(err);
       });
     });
-  }
+  }*/
 }
