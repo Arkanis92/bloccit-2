@@ -85,7 +85,7 @@ describe("routes : topics", () => {
 
   describe("GET /topics/:id", () => {
 
-    it("should render a view with the selected topic", (done) => {
+    it("should render a view with the selected topic", () => {
       request.get(`${base}${this.topic.id}`, (err, res, body) => {
         expect(err).toBeNull();
         expect(body).toContain("JS Frameworks");
@@ -123,7 +123,7 @@ describe("routes : topics", () => {
 
   describe("GET /topics/:id/edit", () => {
 
-    it("should render a view with an edit topic form", (done) => {
+    it("should render a view with an edit topic form", () => {
       request.get(`${base}${this.topic.id}/edit`, (err, res, body) => {
         expect(err).toBeNull();
         expect(body).toContain("Edit Topic");
@@ -144,7 +144,7 @@ describe("routes : topics", () => {
             description: "There are a lot of them"
           }
         };
-        
+
         request.post(options,
           (err, res, body) => {
 
