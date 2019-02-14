@@ -39,6 +39,7 @@ module.exports = {
   destroy(req, res, next){
     advertisementQueries.deleteAdvertisement(req.params.id, (err, advertisement) => {
       if(err){
+        console.log(err);
         res.redirect(500, `/advertisement/${advertisement.id}`)
       } else {
         res.redirect(303, "/advertisement")

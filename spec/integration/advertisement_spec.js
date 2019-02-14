@@ -81,11 +81,11 @@ describe("routes : advertisement", () => {
         );
       });
     });
-/*
+
     describe("GET /advertisement/:id", () => {
 
       it("should render a view with the selected advertisement", (done) => {
-        request.get(`${base}${this.advertisement.id}`, (err, res, body) => {
+        request.get(`${base}/${this.advertisement.id}`, (err, res, body) => {
           expect(err).toBeNull();
           expect(body).toContain("Advertisement");
           done();
@@ -93,8 +93,7 @@ describe("routes : advertisement", () => {
       });
 
     });
-*/
-/*
+
     describe("POST /advertisement/:id/destroy", () => {
 
       it("should delete the advertisement with the associated ID", (done) => {
@@ -106,8 +105,8 @@ describe("routes : advertisement", () => {
 
           expect(advertisementCountBeforeDelete).toBe(1);
 
-          request.post(`{base}${this.advertisement.id}/destroy`, (err, res, body) => {
-            advertisement.all()
+          request.post(`${base}${this.advertisement.id}/destroy`, (err, res, body) => {
+            Advertisement.all()
             .then((advertisement) => {
               expect(err).toBeNull();
               expect(advertisement.length).toBe(advertisementCountBeforeDelete - 1);
@@ -120,12 +119,11 @@ describe("routes : advertisement", () => {
       });
 
     });
-*/
-/*
+
     describe("GET /advertisement/:id/edit", () => {
 
       it("should render a view with an edit advertisement form", (done) => {
-        request.get(`${base}${this.advertisement.id}/edit`, (err, res, body) => {
+        request.get(`${base}/${this.advertisement.id}/edit`, (err, res, body) => {
           expect(err).toBeNull();
           expect(body).toContain("Edit Advertisement");
           expect(body).toContain("Advertisement");
@@ -134,7 +132,7 @@ describe("routes : advertisement", () => {
       });
 
     });
-*/
+
     describe("POST /topics/:id/update", () => {
 
       it("should update the advertisement with the given values", (done) => {
