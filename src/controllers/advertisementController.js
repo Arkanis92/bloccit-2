@@ -23,7 +23,7 @@ module.exports = {
       if(err){
         res.redirect(500, "/advertisement/new");
       } else {
-        res.redirect(303, `advertisement/${advertisement.id}`);
+        res.redirect(303, `${advertisement.id}`);
       }
     });
   },

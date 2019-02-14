@@ -105,7 +105,7 @@ describe("routes : advertisement", () => {
 
           expect(advertisementCountBeforeDelete).toBe(1);
 
-          request.post(`${base}${this.advertisement.id}/destroy`, (err, res, body) => {
+          request.post(`${base}/${this.advertisement.id}/destroy`, (err, res, body) => {
             Advertisement.all()
             .then((advertisement) => {
               expect(err).toBeNull();
