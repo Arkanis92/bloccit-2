@@ -56,7 +56,58 @@ describe("Flair", () => {
        });
      });
 
+     it("should not create a post with missing name, color, or assigned post", (done) =>{
+       Flair.create({
+         name: "Cory"
+       })
+       .then((flair) => {
+
+       })
+       done();
+
+     })
+     .catch((err) => {
+
+       expect(err.message).toContain("Flair.color cannot be null");
+       expect(err.message).toContain("Flair.postId cannot be null");
+     })
    });
+
+   describe("#setPost()", () => {
+
+     it("should associate a flair and a post together", (done) => {
+
+       Post.create({
+         title: "My first visit to Proxima Centauri b",
+         body: "I saw some rocks."
+       })
+       .then((newPost) => {
+
+         expect(this.flair.postId).toBe(this.post.id);
+
+         this.flair.setPost(newPost)
+         .then((flair) => {
+
+           expect(flair.postId).toBe(newPost.id);
+           done();
+
+         });
+       })
+     });
+
+   });
+
+   describe("#getPost()", () => {
+
+     it("should return the associated post", (done) => {
+
+       this.flair.getPost()
+       .then((associatedPost) => {
+         expect(associatedPost.title).toBe("My first visit to Proxima Centauri b");
+         done();
+       })
+     })
+   })
 
   });
 });
