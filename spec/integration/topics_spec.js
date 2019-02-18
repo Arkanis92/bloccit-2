@@ -69,6 +69,7 @@ describe("routes : topics", () => {
         (err, res, body) => {
           Topic.findOne({where: {title: "blink-182 songs"}})
           .then((topic) => {
+            console.log(topic);
             expect(res.statusCode).toBe(303);
             expect(topic.title).toBe("blink-182 songs");
             expect(topic.description).toBe("What's your favorite blink-182 song?");
@@ -134,7 +135,7 @@ describe("routes : topics", () => {
 
         request.post(`${base}${this.topic.id}/destroy`, (err, res, body) => {
           Topic.all()
-          .then((topics) => {
+          .then((topics, done) => {
             expect(err).toBeNull();
             expect(topics.length).toBe(topicCountBeforeDelete - 1);
             done();
@@ -149,7 +150,7 @@ describe("routes : topics", () => {
 
   describe("GET /topics/:id/edit", () => {
 
-    it("should render a view with an edit topic form", () => {
+    it("should render a view with an edit topic form", (done) => {
       request.get(`${base}${this.topic.id}/edit`, (err, res, body) => {
         expect(err).toBeNull();
         expect(body).toContain("Edit Topic");
