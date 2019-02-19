@@ -25,7 +25,7 @@ module.exports = {
         type: Sequelize.DATE
       },
       topicId: {
-        type: Sequelize.INTEGEr,
+        type: Sequelize.INTEGER,
         onDelete: "CASCADE",
         allowNull: false,
         references: {
