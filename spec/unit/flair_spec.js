@@ -105,9 +105,9 @@ describe("Flair", () => {
        .then((associatedPost) => {
          expect(associatedPost.title).toBe("My first visit to Proxima Centauri b");
          done();
-       })
-     })
-   })
+       });
+     });
+   });
 
   });
 });

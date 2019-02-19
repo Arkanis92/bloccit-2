@@ -8,6 +8,6 @@ module.exports = {
     app.use(staticRoutes);
     app.use(topicRoutes);
     app.use(postRoutes);
-    app.user(flairRoutes);
+    app.use(flairRoutes);
   }
 }
