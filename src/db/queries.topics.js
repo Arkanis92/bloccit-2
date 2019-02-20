@@ -54,8 +54,6 @@ module.exports = {
   updateTopic(id, updatedTopic, callback){
     return Topic.findById(id)
     .then((topic) => {
-      console.log(updatedTopic);
-      console.log(topic);
       if(!topic){
         return callback("Topic not found");
       }
