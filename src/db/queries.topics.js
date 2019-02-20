@@ -26,7 +26,7 @@ module.exports = {
     })
   },
   getTopic(id, callback){
-    return Topic.findById(id)
+
     return Topic.findById(id, {
       include: [{
         model: Post,
@@ -59,7 +59,7 @@ module.exports = {
       }
 
       topic.update(updatedTopic, {
-        field: Object.keys(updatedTopic)
+        fields: Object.keys(updatedTopic)
       })
       .then(() => {
         callback(null, topic);
