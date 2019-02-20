@@ -85,7 +85,7 @@ describe("routes : topics", () => {
 
   describe("GET /topics/:id", () => {
 
-    it("should render a view with the selected topic", () => {
+    it("should render a view with the selected topic", (done) => {
       request.get(`${base}${this.topic.id}`, (err, res, body) => {
         expect(err).toBeNull();
         expect(body).toContain("JS Frameworks");
@@ -123,7 +123,7 @@ describe("routes : topics", () => {
 
   describe("GET /topics/:id/edit", () => {
 
-    it("should render a view with an edit topic form", () => {
+    it("should render a view with an edit topic form", (done) => {
       request.get(`${base}${this.topic.id}/edit`, (err, res, body) => {
         expect(err).toBeNull();
         expect(body).toContain("Edit Topic");
@@ -136,14 +136,14 @@ describe("routes : topics", () => {
 
   describe("POST /topics/:id/update", () => {
 
-    it("should update the topic with the given values", (done) => {
-       const options = {
-          url: `${base}${this.topic.id}/update`,
-          form: {
-            title: "JavaScript Frameworks",
-            description: "There are a lot of them"
-          }
-        };
+     it("should update the topic with the given values", (done) => {
+        const options = {
+           url: `${base}${this.topic.id}/update`,
+           form: {
+             title: "JavaScript Frameworks",
+             description: "There are a lot of them"
+           }
+         };
 
         request.post(options,
           (err, res, body) => {
