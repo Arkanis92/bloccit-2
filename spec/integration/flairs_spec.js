@@ -53,7 +53,7 @@ describe("routes : flairs", () => {
   describe("GET /topics/:topicId/posts/:postId/flairs/new", () => {
 
     it("should render a new flair form", (done) => {
-      request.get(`${base}/${this.topic.id}/posts/${this.post.id}/new`, (err, res, body) => {
+      request.get(`${base}/${this.topic.id}/posts/${this.post.id}/flairs/new`, (err, res, body) => {
         expect(err).toBeNull();
         expect(body).toContain("New Flair");
         done();

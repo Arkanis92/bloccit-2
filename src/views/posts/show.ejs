@@ -8,8 +8,8 @@
 
     <main class="container">
       <h1><%= post.title %></h1>
-        <p><%= flair.name %></p>
-        <p><%= flair.color %></p>
+        <p><%= post.flair.name %></p>
+        <p><%= post.flair.color %></p>
 
       <a href="/topics/<%= post.topicId %>/posts/<%= post.id %>/edit" class="btn btn-warning">Edit</a>
       <a href="/topics/<%= topic.id %>/posts/<%= post.id %>/flairs/new" class = "btn btn-success">New Flair</a>

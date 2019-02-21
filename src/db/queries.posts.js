@@ -16,7 +16,7 @@ module.exports = {
     return Post.findById(id, {
       include: [{
         model: Flair,
-        as: "flairs"
+        as: "flair"
       }]
     })
     .then((post) => {
