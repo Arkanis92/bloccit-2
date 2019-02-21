@@ -19,12 +19,12 @@ module.exports = {
      });
    },
    show(req, res, next){
-      postQueries.getPost(req.params.id, (err, post, topic) => {
-        console.log(err);
+      postQueries.getPost(req.params.id, (err, post) => {
         if(err || post == null){
           res.redirect(404, "/");
         } else {
-          res.render("posts/show", {post, topic});
+          const topicId = req.params.id;
+          res.render("posts/show", {post, topicId});
         }
       });
     },
