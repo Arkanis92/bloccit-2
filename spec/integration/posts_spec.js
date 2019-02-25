@@ -60,7 +60,7 @@ describe("routes : posts", () => {
       });
     });
 */
-  describe("admin user performing CRUD actions for Post", () => {
+  fdescribe("admin user performing CRUD actions for Post", () => {
 
     beforeEach((done) => {  // before each suite in admin context
       User.create({

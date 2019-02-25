@@ -1,5 +1,5 @@
 const postQueries = require("../db/queries.posts.js");
-const Authorizer = require("../policies/topic");
+const Authorizer = require("../policies/post");
 
 module.exports = {
   new(req, res, next){
@@ -31,19 +31,18 @@ module.exports = {
       });
     } else {
       req.flash("notice", "You are not authorized to do that.");
-      req.redirect("/posts");
+      res.redirect("/posts");
     }
   },
-   show(req, res, next){
-      postQueries.getPost(req.params.id, (err, post) => {
-        if(err || post == null){
-          res.redirect(404, "/");
-        } else {
-          res.render("posts/show", {post});
-        }
-      });
-    },
-
+  show(req, res, next){
+    postQueries.getPost(req.params.id, (err, post) => {
+      if(err || post == null){
+        res.redirect(404, "/");
+      } else {
+        res.render("posts/show", {post});
+      }
+    });
+  },
   destroy(req, res, next){
     postQueries.deletePost(req.params.id, (err, deletedRecordsCount) => {
       if(err){
