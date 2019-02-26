@@ -11,7 +11,7 @@ module.exports = {
       req.flash("notice", "You are not authorized to do that.");
       res.redirect("/posts");
     }
-  }/*,
+  },
   create(req, res, next){
     const authorized = new Authorizer(req.user).create();
 
@@ -67,7 +67,7 @@ module.exports = {
           /*res.redirect(
             typeof err === "number" ? err : 500,
             `topics/${req.params.topicId}/posts/${req.params.id}`
-          );
+          );*/
         }
       }
     });
@@ -80,5 +80,5 @@ module.exports = {
         res.redirect(`/topics/${req.params.topicId}/posts/${req.params.id}`);
       }
     });
-  }*/
+  }
 }

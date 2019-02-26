@@ -3,15 +3,15 @@ const ApplicationPolicy = require("./application");
 module.exports = class PostPolicy extends ApplicationPolicy {
 
  new() {
-    return this.new();
+    return (this._isAdmin() || this.new());
   }
-/*
+
   create() {
     return this.new();
   }
 
   edit() {
-    return this._isAdmin();
+    return (this._isAdmin() || this._isOwner());
   }
 
   update() {
@@ -20,5 +20,6 @@ module.exports = class PostPolicy extends ApplicationPolicy {
 
   destroy() {
     return this.update();
-  }*/
+  }
+  
 }

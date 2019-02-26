@@ -10,7 +10,7 @@ module.exports = {
     .catch((err) => {
       callback(err);
     })
-  }/*,
+  },
   getPost(id, callback){
     return Post.findById(id)
     .then((post) => {
@@ -63,5 +63,5 @@ module.exports = {
         callback("Forbidden");
       }
     });
-  }*/
+  }
 }
