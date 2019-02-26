@@ -60,7 +60,7 @@ describe("routes : posts", () => {
       });
     });
 */
-  fdescribe("admin user performing CRUD actions for Post", () => {
+  describe("admin user performing CRUD actions for Post", () => {
 
     beforeEach((done) => {  // before each suite in admin context
       User.create({
@@ -89,7 +89,7 @@ describe("routes : posts", () => {
       it("should render a new post form", (done) => {
         request.get(`${base}/${this.topic.id}/posts/new`, (err, res, body) => {
           expect(err).toBeNull();
-          expect(body).toContain("New Post");
+          expect(body).toContain("New Post");//body does not contain New Post
           done();
         });
       });
@@ -176,7 +176,7 @@ describe("routes : posts", () => {
          Post.findById(1)
          .then((post) => {
            expect(err).toBeNull();
-           expect(post).toBeNull();
+           expect(post).toBeNull();//post is not null
            done();
          })
        });
@@ -208,7 +208,7 @@ describe("routes : posts", () => {
           body: "I love watching them melt slowly."
         }
       }, (err, res, body) => {
-        expect(res.statusCode).toBe(302);
+        expect(res.statusCode).toBe(302);//
         done();
       });
     });
@@ -230,7 +230,7 @@ describe("routes : posts", () => {
             where: {id: this.post.id}
           })
           .then((post) => {
-            expect(post.title).toBe("Snowman Building Competition");
+            expect(post.title).toBe("Snowman Building Competition");//
             done();
           });
         });

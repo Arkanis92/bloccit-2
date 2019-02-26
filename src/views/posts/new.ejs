@@ -10,7 +10,6 @@
 
       <% include ../static/partials/messages.ejs %>
 
-      <% if (currentUser && currentUser.isAdmin()) { %>
       <h1>New Post</h1>
 
       <form action="/topics/<%= topicId %>/posts/create" method="post">
@@ -26,7 +25,6 @@
         </div>
         <button type="submit" class="btn btn-primary">Submit</button>
       </form>
-      <% } %>
     </main>
 
     <% include ../static/partials/baseScripts.ejs %>

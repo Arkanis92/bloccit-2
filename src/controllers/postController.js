@@ -62,10 +62,12 @@ module.exports = {
         if(authorized){
           res.render("posts/edit", {post});
         } else {
-          res.redirect(
+          req.flash("You are not authorized to do that.")
+          res.redirect(`/topics/${req.params.topicId}/posts/${req.params.id}`)
+          /*res.redirect(
             typeof err === "number" ? err : 500,
             `topics/${req.params.topicId}/posts/${req.params.id}`
-          );
+          );*/
         }
       }
     });
@@ -73,7 +75,7 @@ module.exports = {
   update(req, res, next){
     postQueries.updatePost(req.params.id, req.body, (err, post) => {
       if(err || post == null){
-        res.redirect(401, `/topics/${req.params.topicId}/posts/${req.params.id}/edit`);
+        res.redirect(404, `/topics/${req.params.topicId}/posts/${req.params.id}/edit`);
       } else {
         res.redirect(`/topics/${req.params.topicId}/posts/${req.params.id}`);
       }
