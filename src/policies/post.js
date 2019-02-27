@@ -21,5 +21,5 @@ module.exports = class PostPolicy extends ApplicationPolicy {
   destroy() {
     return this.update();
   }
-  
+
 }

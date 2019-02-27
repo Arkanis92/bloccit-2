@@ -48,6 +48,19 @@ describe("routes : posts", () => {
 
 /*  describe("guest user for Post"), () => {
 
+      beforeEach((done) => {
+        request.get({
+          url: "http://localhost:3000/auth/fake",
+          form: {
+            role: "guest"
+          }
+        },
+          (err, res, body) => {
+            done();
+          }
+        );
+      });
+
       describe("GET /topics/:topicId/posts/:id", () => {
 
         it("should render a view with the selected post", (done) => {
@@ -174,6 +187,7 @@ describe("routes : posts", () => {
 
          Post.findById(1)
          .then((post) => {
+           console.log(null);
            expect(err).toBeNull();
            expect(post).toBeNull();
            done();

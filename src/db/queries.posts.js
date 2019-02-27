@@ -41,7 +41,7 @@ module.exports = {
     });
   },
   updatePost(req, updatedPost, callback){
-    return Post.findById(id)
+    return Post.findById(req.params.id)
     .then((post) => {
       if(!post){
         return callback("Post not found");
