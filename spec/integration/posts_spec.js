@@ -45,8 +45,8 @@ describe("routes : posts", () => {
     });
 
   });
-
-/*  describe("guest user for Post"), () => {
+/*
+  describe("guest user for Post"), () => {
 
       beforeEach((done) => {
         request.get({
@@ -180,21 +180,23 @@ describe("routes : posts", () => {
    describe("POST /topics/:topicId/posts/:id/destroy", () => {
 
      it("should delete the post with the associated ID", (done) => {
+       Post.all()
+       .then((posts) => {
+         const postCountBeforeDelete = posts.length;
 
-       expect(this.post.id).toBe(1);
+       expect(postCountBeforeDelete).toBe(1);
 
        request.post(`${base}/${this.topic.id}/posts/${this.post.id}/destroy`, (err, res, body) => {
 
          Post.findById(1)
          .then((post) => {
-           console.log(null);
            expect(err).toBeNull();
            expect(post).toBeNull();
            done();
          })
        });
-
      });
+   });
 
    });
 
@@ -243,7 +245,7 @@ describe("routes : posts", () => {
             where: {id: this.post.id}
           })
           .then((post) => {
-            expect(post.title).toBe("Snowman Building Competition");
+            expect(post.title).toBe("Snowball Fighting");
             done();
           });
         });
@@ -253,7 +255,7 @@ describe("routes : posts", () => {
 
 //  describe("owner user performing CRUD actions for Post")
 //  edit, update, destroy, show
-/*
+
   describe("owner user performing CRUD actions for Post", () => {
      beforeEach((done) => {
        User.create({
@@ -287,7 +289,7 @@ describe("routes : posts", () => {
        });
 
      });
-/*
+
      describe("POST /topics/:topicId/posts/:id/destroy", () => {
 
        it("should delete the post with the associated ID", (done) => {
@@ -307,8 +309,8 @@ describe("routes : posts", () => {
        });
 
      });
-*/
-/*     describe("GET /topics/:topicId/posts/:id/edit", () => {
+
+     describe("GET /topics/:topicId/posts/:id/edit", () => {
 
        it("should render a view with an edit post form", (done) => {
          request.get(`${base}/${this.topic.id}/posts/${this.post.id}/edit`, (err, res, body) => {
@@ -353,7 +355,7 @@ describe("routes : posts", () => {
               where: {id: this.post.id}
             })
             .then((post) => {
-              expect(post.title).toBe("Snowman Building Competition");
+              expect(post.title).toBe("Snowball Fighting");
               done();
             });
           });
@@ -365,7 +367,7 @@ describe("routes : posts", () => {
 //    new, create, show
 
 // context of member user
-/*  describe("member user performing CRUD actions for Post", () => {
+  describe("member user performing CRUD actions for Post", () => {
 
     beforeEach((done) => {  // before each suite in admin context
       User.create({
@@ -467,5 +469,5 @@ describe("routes : posts", () => {
        });
      });
    });
- });*/
+ });
 });

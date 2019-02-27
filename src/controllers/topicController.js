@@ -47,7 +47,7 @@ module.exports = {
 
     topicQueries.getTopic(req.params.id, (err, topic) => {
 
-      if(err || topic === null){
+      if(err || topic == null){
         res.redirect(404, "/");
       } else {
         res.render("topics/show", {topic});
@@ -57,10 +57,11 @@ module.exports = {
   destroy(req, res, next){
     topicQueries.deleteTopic(req, (err, topic) => {
       if(err){
-        res.redirect(
+        res.redirect(err, `/topics/${req.params.id}`)
+        /*res.redirect(
           typeof err === "number" ? err : 500,
           `topics/$(req.params.id)`
-        );
+        );*/
       } else {
         res.redirect(303, "/topics")
       }
