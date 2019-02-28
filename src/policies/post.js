@@ -3,7 +3,7 @@ const ApplicationPolicy = require("./application");
 module.exports = class PostPolicy extends ApplicationPolicy {
 
  new() {
-    return (this._isAdmin() || this._isMember());
+    return (this._isAdmin() || this._isMember() || this._isOwner());
   }
 
   create() {
