@@ -1,6 +1,6 @@
 const Post = require("./models").Post;
 const Topic = require("./models").Topic;
-const Authorizer = require("../policies/post").Authorizer
+const Authorizer = require("../policies/post");
 
 module.exports = {
   addPost(newPost, callback){
@@ -22,7 +22,7 @@ module.exports = {
     })
   },
   deletePost(id, callback){
-    return Post.findById(req.params.id)
+    return Post.findById(id)
     .then((post) => {
 
       const authorized = new Authorizer(req.user, post).destroy();
@@ -30,9 +30,11 @@ module.exports = {
       if(authorized) {
         post.destroy()
         .then((res) => {
+
           callback(null, post);
         });
       } else {
+
         req.flash("notice", "You are not authorized to do that.")
         callback(401);
       }

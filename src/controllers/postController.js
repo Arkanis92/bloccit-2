@@ -44,9 +44,9 @@ module.exports = {
     });
   },
   destroy(req, res, next){
-    postQueries.deletePost(req.params.id, (err, deletedRecordsCount) => {
+    postQueries.deletePost(req, (err, deletedRecordsCount) => {
       if(err){
-        res.redirect(err, `/topics/${req.params.topicId}/posts/${req.params.id}`)
+        res.redirect(500, `/topics/${req.params.topicId}/posts/${req.params.id}`)
       } else {
         res.redirect(303, `/topics/${req.params.topicId}`)
       }
