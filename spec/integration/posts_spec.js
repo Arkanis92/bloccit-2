@@ -45,34 +45,33 @@ describe("routes : posts", () => {
     });
 
   });
-/*
-  describe("guest user for Post"), () => {
 
-      beforeEach((done) => {
-        request.get({
-          url: "http://localhost:3000/auth/fake",
-          form: {
-            role: "guest"
-          }
-        },
-          (err, res, body) => {
-            done();
-          }
-        );
-      });
+  describe("guest user performing CRUD actions for Post", () => {
 
-      describe("GET /topics/:topicId/posts/:id", () => {
+   beforeEach((done) => {
+     request.get({
+       url: "http://localhost:3000/auth/fake",
+       form: {
+         role: "guest"
+       }
+     },
+       (err, res, body) => {
+         done();
+       }
+     );
+   });
 
-        it("should render a view with the selected post", (done) => {
-          request.get(`${base}/${this.topic.id}/posts/${this.post.id}`, (err, res, body) => {
-            expect(err).toBeNull();
-            expect(body).toContain("Snowball Fighting");
-            done();
-          });
-        });
-      });
-    });
-*/
+   describe("GET /topics/:topicId/posts/:id", () => {
+    it("should render a view with the selected post", (done) => {
+     request.get(`${base}/${this.topic.id}/posts/${this.post.id}`, (err, res, body) => {
+       expect(err).toBeNull();
+       expect(body).toContain("Snowball Fighting");
+       done();
+       });
+     });
+   });
+ });
+
   describe("admin user performing CRUD actions for Post", () => {
 
     beforeEach((done) => {
@@ -232,8 +231,8 @@ describe("routes : posts", () => {
         const options = {
           url: `${base}/${this.topic.id}/posts/${this.post.id}/update`,
           form: {
-            title: "Snowman Building Competition",
-            body: "I love watching them melt slowly."
+            title: "Snowball Fighting",
+            body: "Snowball fights are fun."
           }
         };
         request.post(options,
@@ -259,9 +258,9 @@ describe("routes : posts", () => {
   describe("owner user performing CRUD actions for Post", () => {
      beforeEach((done) => {
        User.create({
-         email: "member@example.com",
+         email: "owner@example.com",
          password: "123456",
-         role: "member"
+         role: "owner"
        }).then((user) => {
          request.get({
            url: "http://localhost:3000/auth/fake",
@@ -342,8 +341,8 @@ describe("routes : posts", () => {
           const options = {
             url: `${base}/${this.topic.id}/posts/${this.post.id}/update`,
             form: {
-              title: "Snowman Building Competition",
-              body: "I love watching them melt slowly."
+              title: "Snowball Fighting",
+              body: "Snowball fights are fun."
             }
           };
           request.post(options,

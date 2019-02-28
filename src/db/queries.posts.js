@@ -22,10 +22,10 @@ module.exports = {
     })
   },
   deletePost(id, callback){
-    return Post.findById(id)
+    return Post.findById(id.params.id)
     .then((post) => {
 
-      const authorized = new Authorizer(req.user, post).destroy();
+      const authorized = new Authorizer(id.user, post).destroy();
 
       if(authorized) {
         post.destroy()
