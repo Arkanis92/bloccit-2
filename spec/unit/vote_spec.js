@@ -268,7 +268,7 @@ describe("Vote", () => {
     })
   });
 
-  /*describe("#hasUpvoteFor()", () => {
+  describe("#hasUpvoteFor()", () => {
 
     it("should determine if the user has already upvoted the post", (done) => {
       Vote.create({
@@ -277,8 +277,11 @@ describe("Vote", () => {
         postId: this.post.id
       })
       .then((votes) => {
-        //something that determines whether the post has an upvote
-        done();
+        vote.postId.hasUpvoteFor()
+        .then((associatedPost) => {
+          expect(this.votes).toBe(true);
+          done();
+        })
       })
       .catch((err) => {
         console.log(err);
@@ -296,14 +299,17 @@ describe("Vote", () => {
         postId: this.post.id
       })
       .then((votes) => {
-        //something that determines whether the post has a downvote
-        done();
+        vote.postId.hasDownvoteFor()
+        .then((associatedPost) => {
+          expect(this.votes).toBe(true);
+          done();
+        })
       })
       .catch((err) => {
         console.log(err);
         done();
       });
     })
-  });*/
+  });
 
 });

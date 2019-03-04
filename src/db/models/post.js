@@ -51,14 +51,14 @@ module.exports = (sequelize, DataTypes) => {
   };
 
   /*Post.protoype.hasUpvoteFor = function(userId){
-
-    if(userId === this.user.id) return true
+    return this.votes.find((vote) => { return vote.userId == userId })
+    //if(userId === this.user.id) return true
 
   };
 
   Post.prototype.hasDownvoteFor = function(userId){
-
-    if(userId === this.user.id) return true
+    return this.votes.find((vote) => { return vote.userId == userId })
+    //if(userId === this.user.id) return true
   }*/
 
   return Post;
