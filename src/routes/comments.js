@@ -9,6 +9,6 @@ router.post("/topics/:topicId/posts/:postId/comments/create",
   commentController.create);
 
 router.post("/topics/:topicId/posts/:postId/comments/:id/destroy",
-  validation.validateComments,
+  //validation.validateComments,
   commentController.destroy);
 module.exports = router;
