@@ -35,6 +35,11 @@ module.exports = (sequelize, DataTypes) => {
       as: "comments"
     });
 
+    Post.hasMany(models.Favorite, {
+      foreignKey: "postId",
+      as: "favorites"
+    });
+
     Post.hasMany(models.Vote, {
       foreignKey: "postId",
       as: "votes"
@@ -49,6 +54,6 @@ module.exports = (sequelize, DataTypes) => {
         .map((v) => { return v.value })
         .reduce((prev, next) => { return prev + next });
   };
-  
+
   return Post;
 };

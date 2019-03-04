@@ -96,6 +96,7 @@ describe("routes : votes", () => {
 
     });
   });
+});
 
   describe("signed in user voting on a post", () => {
 
