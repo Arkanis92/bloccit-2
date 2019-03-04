@@ -257,24 +257,24 @@ describe("routes : posts", () => {
 
   describe("owner user performing CRUD actions for Post", () => {
      beforeEach((done) => {
-       User.create({
+       /*User.create({
          email: "owner@example.com",
          password: "123456",
          role: "owner"
-       }).then((user) => {
+       }).then((user) => {*/
          request.get({
            url: "http://localhost:3000/auth/fake",
            form: {
-             role: user.role,
-             userId: user.id,
-             email: user.email
+             role: this.user.role,
+             userId: this.user.id,
+             email: this.user.email
            }
          },
           (err, res, body) => {
             done();
           }
          );
-       });
+       //});
      });
 
      describe("GET /topics/:topicId/posts/:id", () => {
@@ -299,6 +299,7 @@ describe("routes : posts", () => {
 
            Post.findById(1)
            .then((post) => {
+
              expect(err).toBeNull();
              expect(post).toBeNull();
              done();

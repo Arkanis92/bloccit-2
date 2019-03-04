@@ -16,9 +16,13 @@ module.exports = {
    });
  },
  deleteComment(req, callback){
+   //console.log("COMMENT ID:", req.params.id);
    return Comment.findById(req.params.id)
    .then((comment) => {
+     //console.log("USER:", req.user);
+     //console.log("COMMMENT:". comment);
      const authorized = new Authorizer(req.user, comment).destroy();
+      //console.log("AUTHORIZED?", authorized);
 
      if(authorized){
        comment.destroy();
