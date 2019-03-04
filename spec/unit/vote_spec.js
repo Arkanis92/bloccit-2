@@ -249,4 +249,61 @@ describe("Vote", () => {
 
   });
 
+  describe("#getPoints()", () => {
+
+    it("should determine how many points the post has", (done) => {
+      Vote.create({
+        value: 1,
+        userId: this.user.id,
+        postId: this.post.id
+      })
+      .then((votes) => {
+        expect(this.post.getPoints()).toBe(1);
+        done();
+      })
+      .catch((err) => {
+        console.log(err);
+        done();
+      });
+    })
+  });
+
+  /*describe("#hasUpvoteFor()", () => {
+
+    it("should determine if the user has already upvoted the post", (done) => {
+      Vote.create({
+        value: 1,
+        userId: this.user.id,
+        postId: this.post.id
+      })
+      .then((votes) => {
+        //something that determines whether the post has an upvote
+        done();
+      })
+      .catch((err) => {
+        console.log(err);
+        done();
+      });
+    })
+  });
+
+  describe("#hasDownvoteFor()", () => {
+
+    it("should determine if the user has already downvoted the post", (done) => {
+      Vote.create({
+        value: -1,
+        userId: this.user.id,
+        postId: this.post.id
+      })
+      .then((votes) => {
+        //something that determines whether the post has a downvote
+        done();
+      })
+      .catch((err) => {
+        console.log(err);
+        done();
+      });
+    })
+  });*/
+
 });
