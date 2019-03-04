@@ -16,7 +16,6 @@ module.exports = {
    });
  },
  deleteComment(req, callback){
-   //console.log("COMMENT ID:", req.params.id);
    return Comment.findById(req.params.id)
    .then((comment) => {
      //console.log("USER:", req.user);
