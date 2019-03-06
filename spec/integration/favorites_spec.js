@@ -100,7 +100,7 @@ describe("routes : favorites", () => {
      });
    });
 
-   fdescribe("signed in user favoriting a post", () => {
+   describe("signed in user favoriting a post", () => {
 
      beforeEach((done) => {  // before each suite in this context
        request.get({         // mock authentication
@@ -157,16 +157,17 @@ describe("routes : favorites", () => {
          request.post(options, (err, res, body) => {
            this.post.getFavorites()
            .then((favorites) => {
+             console.log(favorites.length);
              const favorite = favorites[0];
-             favCountBeforeDelete > favorites.length;
+             favCountBeforeDelete = favorites.length;
 
              request.post(`${base}${this.topic.id}/posts/${this.post.id}/favorites/${favorite.id}/destroy`,
                (err, res, body) => {
                  this.post.getFavorites()
                  .then((updatedFavorites) => {
-                   console.log(favorites.length);
+                   console.log(updatedFavorites.length);
                    console.log(favCountBeforeDelete);
-                   expect(favorites.length).toBe(favCountBeforeDelete - 1);
+                   expect(updatedFavorites.length).toBe(favCountBeforeDelete - 1);
                    done();
                  });
                }
