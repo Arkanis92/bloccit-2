@@ -3,7 +3,7 @@ const ApplicationPolicy = require("./application");
 module.exports = class TopicPolicy extends ApplicationPolicy {
 
  new() {
-   return (this._isMember() || this._isAdmin() || this._isOwner());
+   return /*(this._isMember() || */this._isAdmin()/* || this._isOwner())*/;
  }
 
  create() {
