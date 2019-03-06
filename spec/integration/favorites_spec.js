@@ -158,12 +158,14 @@ describe("routes : favorites", () => {
            this.post.getFavorites()
            .then((favorites) => {
              const favorite = favorites[0];
-             favCountBeforeDelete = favorites.length;
+             favCountBeforeDelete > favorites.length;
 
              request.post(`${base}${this.topic.id}/posts/${this.post.id}/favorites/${favorite.id}/destroy`,
                (err, res, body) => {
                  this.post.getFavorites()
-                 .then((favorites) => {
+                 .then((updatedFavorites) => {
+                   console.log(favorites.length);
+                   console.log(favCountBeforeDelete);
                    expect(favorites.length).toBe(favCountBeforeDelete - 1);
                    done();
                  });
