@@ -44,7 +44,7 @@ module.exports = {
   },
   show(req, res, next){
     userQueries.getUser(req.params.id, (err, result) => {
-
+      //console.log(user);
       if(err || result.user === undefined){
         req.flash("notice", "No user found with that ID.");
         res.redirect("/");
