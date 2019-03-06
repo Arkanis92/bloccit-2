@@ -51,14 +51,6 @@ module.exports = (sequelize, DataTypes) => {
       foreignKey: "postId",
       as: "votes"
     });
-
-    Post.afterCreate((post, callback) => {
-      return models.Vote.create({
-        value: 1,
-        userId: post.userId,
-        postId: post.id
-      });
-    });
   };
 
   Post.prototype.getPoints = function(){
