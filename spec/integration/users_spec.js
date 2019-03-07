@@ -34,7 +34,7 @@ describe("routes : users", () => {
 
   });
 
-  describe("GET /users/:id", () => {
+  fdescribe("GET /users/:id", () => {
 
     beforeEach((done) => {
       this.user;

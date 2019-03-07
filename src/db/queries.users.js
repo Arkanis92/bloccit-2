@@ -22,13 +22,15 @@ module.exports = {
     })
   },
   getUser(id, callback){
+
     let result = {};
     User.findById(id)
     .then((user) => {
+
       if(!user) {
         callback(404);
       } else {
-        //console.log(user);
+
         result["user"] = user;
 
         Post.scope({method: ["lastFiveFor", id]}).all()
@@ -41,15 +43,15 @@ module.exports = {
 
             result["comments"] = comments;
 
-            Favorite.scope({method: ["favoritePosts", id]}).all()
+            /*Favorite.scope({method: ["favoritePosts", id]}).all()
             .then((favorites) => {
-              console.log(user);
+
               result["favorites"] = favorites;
               callback(null, result);
             })
             .catch((err) => {
               callback(err);
-            })
+            })*/
           })
         .catch((err) => {
           callback(err);
