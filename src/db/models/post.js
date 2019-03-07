@@ -50,7 +50,7 @@ module.exports = (sequelize, DataTypes) => {
         .reduce((prev, next) => { return prev + next });
   };
 
-  /*Post.protoype.hasUpvoteFor = function(userId){
+  Post.protoype.hasUpvoteFor = function(userId){
     return this.votes.find((vote) => { return vote.userId == userId })
     //if(userId === this.user.id) return true
 
@@ -59,7 +59,7 @@ module.exports = (sequelize, DataTypes) => {
   Post.prototype.hasDownvoteFor = function(userId){
     return this.votes.find((vote) => { return vote.userId == userId })
     //if(userId === this.user.id) return true
-  }*/
+  }
 
   return Post;
 };

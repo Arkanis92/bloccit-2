@@ -279,7 +279,7 @@ describe("Vote", () => {
       .then((votes) => {
         vote.postId.hasUpvoteFor()
         .then((associatedPost) => {
-          expect(this.votes).toBe(true);
+          expect(this.votes.value).toBe(1);
           done();
         })
       })
@@ -301,7 +301,7 @@ describe("Vote", () => {
       .then((votes) => {
         vote.postId.hasDownvoteFor()
         .then((associatedPost) => {
-          expect(this.votes).toBe(true);
+          expect(this.votes.value).toBe(-1);
           done();
         })
       })
