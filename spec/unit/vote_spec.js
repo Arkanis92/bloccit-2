@@ -249,7 +249,7 @@ describe("Vote", () => {
 
   });
 
-  describe("#getPoints()", () => {
+  /*describe("#getPoints()", () => {
 
     it("should determine how many points the post has", (done) => {
       Vote.create({
@@ -266,7 +266,7 @@ describe("Vote", () => {
         done();
       });
     })
-  });
+  });*/
 
   describe("#hasUpvoteFor()", () => {
 

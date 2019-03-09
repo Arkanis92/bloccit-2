@@ -41,24 +41,21 @@ module.exports = (sequelize, DataTypes) => {
     });
   };
 
-  Post.prototype.getPoints = function(){
-
-    if(this.votes.length === 0) return 0
+  /*Post.prototype.getPoints = function(){
+    console.log(this.votes.length);
+    if(this.votes.length === 0) return 0;
 
       return this.votes
         .map((v) => { return v.value })
         .reduce((prev, next) => { return prev + next });
-  };
+  };*/
 
-  Post.protoype.hasUpvoteFor = function(userId){
+  Post.prototype.hasUpvoteFor = function(userId){
     return this.votes.find((vote) => { return vote.userId == userId })
-    //if(userId === this.user.id) return true
-
   };
 
   Post.prototype.hasDownvoteFor = function(userId){
     return this.votes.find((vote) => { return vote.userId == userId })
-    //if(userId === this.user.id) return true
   }
 
   return Post;
