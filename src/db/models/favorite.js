@@ -23,7 +23,7 @@ module.exports = (sequelize, DataTypes) => {
     });
   };
 
-  /*Favorite.addScope("usersFavoritePosts", (userId) => {
+  Favorite.addScope("usersFavoritePosts", (userId) => {
     return {
       include: [{
         model: models.Post
@@ -31,7 +31,7 @@ module.exports = (sequelize, DataTypes) => {
       where: { userId: userId },
       order: [["createdAt", "DESC"]]
     }
-  });*/
+  });
 
   return Favorite;
 };

@@ -34,7 +34,7 @@ describe("routes : users", () => {
 
   });
 
-  fdescribe("GET /users/:id", () => {
+  describe("GET /users/:id", () => {
 
     beforeEach((done) => {
       this.user;
@@ -83,8 +83,8 @@ describe("routes : users", () => {
 
       request.get(`${base}${this.user.id}`, (err, res, body) => {
 
-        expect(body).toContain("Snowball Fighting");
-        expect(body).toContain("This comment is alright.")
+        expect(body).not.toContain("Snowball Fighting");
+        expect(body).not.toContain("This comment is alright.")
         done();
       });
 

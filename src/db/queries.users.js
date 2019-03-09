@@ -43,7 +43,7 @@ module.exports = {
 
             result["comments"] = comments;
 
-            /*Favorite.scope({method: ["favoritePosts", id]}).all()
+            Favorite.scope({method: ["favoritePosts", id]}).all()
             .then((favorites) => {
 
               result["favorites"] = favorites;
@@ -51,7 +51,7 @@ module.exports = {
             })
             .catch((err) => {
               callback(err);
-            })*/
+            })
           })
         .catch((err) => {
           callback(err);
