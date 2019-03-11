@@ -268,48 +268,4 @@ describe("Vote", () => {
     })
   });*/
 
-  describe("#hasUpvoteFor()", () => {
-
-    it("should determine if the user has already upvoted the post", (done) => {
-      Vote.create({
-        value: 1,
-        userId: this.user.id,
-        postId: this.post.id
-      })
-      .then((votes) => {
-        vote.postId.hasUpvoteFor()
-        .then((associatedPost) => {
-          expect(this.votes.value).toBe(1);
-          done();
-        })
-      })
-      .catch((err) => {
-        console.log(err);
-        done();
-      });
-    })
-  });
-
-  describe("#hasDownvoteFor()", () => {
-
-    it("should determine if the user has already downvoted the post", (done) => {
-      Vote.create({
-        value: -1,
-        userId: this.user.id,
-        postId: this.post.id
-      })
-      .then((votes) => {
-        vote.postId.hasDownvoteFor()
-        .then((associatedPost) => {
-          expect(this.votes.value).toBe(-1);
-          done();
-        })
-      })
-      .catch((err) => {
-        console.log(err);
-        done();
-      });
-    })
-  });
-
 });

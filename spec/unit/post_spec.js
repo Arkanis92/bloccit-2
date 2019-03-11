@@ -2,6 +2,7 @@ const sequelize = require("../../src/db/models/index").sequelize;
 const Topic = require("../../src/db/models").Topic;
 const Post = require("../../src/db/models").Post;
 const User = require("../../src/db/models").User;
+const Vote = require("../../src/db/models").Vote;
 
 describe("Post", () => {
 
@@ -142,6 +143,50 @@ describe("Post", () => {
 
     });
 
+  });
+
+  describe("#hasUpvoteFor()", () => {
+
+    it("should determine if the user has already upvoted the post", (done) => {
+      Vote.create({
+        value: 1,
+        userId: this.user.id,
+        postId: this.post.id
+      })
+      .then((vote) => {
+        this.post.hasUpvoteFor(this.user.id)
+        .then((res) => {
+          expect(res).toBe(true);
+          done();
+        })
+      })
+      .catch((err) => {
+        console.log(err);
+        done();
+      });
+    })
+  });
+
+  describe("#hasDownvoteFor()", () => {
+
+    it("should determine if the user has already downvoted the post", (done) => {
+      Vote.create({
+        value: -1,
+        userId: this.user.id,
+        postId: this.post.id
+      })
+      .then((vote) => {
+        this.post.hasDownvoteFor(this.user.id)
+        .then((res) => {
+          expect(res).toBe(true);
+          done();
+        })
+      })
+      .catch((err) => {
+        console.log(err);
+        done();
+      });
+    })
   });
 
 });
